@@ -1,0 +1,31 @@
+library(GenomicFeatures)
+library(Homo.sapiens)
+library(rtracklayer)
+library(Biostrings)
+library(BSgenome)
+library(BSgenome.Hsapiens.UCSC.hg19)
+library(BSgenome.Hsapiens.UCSC.hg38.masked)
+library(clusterProfiler)
+library(dplyr)
+library(rtracklayer)
+library(Biostrings)
+library(BSgenome)
+library(BSgenome.Hsapiens.UCSC.hg38)
+library(gkmSVM)
+source("function.R")
+######################
+genNullSeqs('all2.bed',nMaxTrials=60,xfold=3,genome=BSgenome.Hsapiens.UCSC.hg38.masked,outputPosFastaFN='n1.fa', outputBedFN='neg10x_n3.bed', outputNegFastaFN='neg10x_n3.fa')
+id<- read.table("all2.bed")
+nega1 <- readDNAStringSet("neg10x_n3.fa")
+nega1 <- as.data.frame(nega1)
+
+p1 <- read.table("n1.fa",sep = "\t")
+n1 <- read.table("neg10x_n3.fa",sep="\t")
+p1 <- readDNAStringSet("n1.fa", format = "fasta")
+n1 <- readDNAStringSet("neg10x_n3.fa", format = "fasta")
+p1 <- as.data.frame(p1)
+n1 <- as.data.frame(n1)
+p1$value <- 1
+n1$value <- 0
+data_ll <- rbind(p1,n1)
+write.table(data_ll,"data_all.txt",sep="\t",quote = F,row.names = F,col.names = F)#########data used for deepCV
