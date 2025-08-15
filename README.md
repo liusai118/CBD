@@ -36,7 +36,9 @@ This repository contains code, data, and analyses for an AI-integrated framework
 ## Results 3. Establishment of the DDN Model for Predicting Bioactive Substructures
 
 - `DDNmodel.py` — Implementation of the DDN model
-
+- `cbdutils` — The utility module for training LGE-GNN models and predicting efficacy
+- `data-dl` — Datasets for LGE-GNN training and efficacy prediction
+  
 ---
 
 ## Results 4. AI-Aided Drug Repurposing Identifies CBD as a Promising Therapeutic Candidate for Ischemic Stroke (IS)
