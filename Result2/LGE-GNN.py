@@ -319,8 +319,7 @@ def main(config):
     # Create and sort results
     df_result = pd.DataFrame(
         {
-            "cid": df_test["cid"],
-            "Name": df_test["cmpdname"],
+            "cid": df_test["Compound_CID"],
             "SMILES": df_test["SMILES"],
             "Cosine_Similarity": similarity_scores
         }
